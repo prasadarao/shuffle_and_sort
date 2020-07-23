@@ -28,12 +28,12 @@
 
 	document.querySelector("#shuffle").onclick = function() {
 		let newPositions = shuffleElements(eles);
-		animate(document.querySelectorAll(".card"), newPositions);
+		animate(cards, newPositions);
 	}
 
 	document.querySelector("#sort").onclick = function() {
 		eles = eles.sort();
-		animate(document.querySelectorAll(".card"), eles);
+		animate(cards, eles);
 	}
 
 	function init() {
