@@ -2,7 +2,6 @@ class Shuffle {
 	constructor() {
 		this.cards = document.querySelectorAll(".card");
                 this.eles = [...Array(this.cards.length).keys()];
-                this.positions = [];
 	}
 	
 	_shuffleElements = (arr) => { 
@@ -14,17 +13,13 @@ class Shuffle {
         }
 
         _setDefaultPositions = (cards) => {
-                cards.forEach( (ele, index) => {
-                        ele.style.top = ele.offsetTop + "px";
-                        ele.style.left = ele.offsetLeft + "px";
-                        this.positions.push({left: ele.style.left, top: ele.style.top});
+                cards.forEach((ele, index) => {
+			ele.style.order = index;
                 });
         }
         _animate = (cards, newPositions) => {
                 cards.forEach((card, index) => {
-                        cards[newPositions[index]].style.top = this.positions[index].top;
-                        cards[newPositions[index]].style.left = this.positions[index].left;
-                        cards[newPositions[index]].style.position = 'absolute';
+                        card.style.order = newPositions[index];
                 });
         }
 
